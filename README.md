@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Platform: Android](https://img.shields.io/badge/Platform-Android-3DDC84.svg?style=flat&logo=android)](https://developer.android.com)
-[![Cursor Rules: Ready](https://img.shields.io/badge/Cursor%20Rules-Ready-blueviolet.svg)](#cursor-rules)
+[![AI Rules: Ready](https://img.shields.io/badge/AI%20Rules-Ready-blueviolet.svg)](#universal-ai-rules)
 [![DPDP: 2026/2027 Compliant](https://img.shields.io/badge/India%20DPDP-2027%20Compliant-FF9933.svg)](#global-jurisdictions-covered)
 [![GDPR: Compliant](https://img.shields.io/badge/EEA%20GDPR-Compliant-003399.svg)](#global-jurisdictions-covered)
 
@@ -17,7 +17,7 @@ This repository compiles public regulator guidelines, platform developer policie
 Android developers face strict, extraterritorial laws. Fines can reach significant amounts (such as 20 million EUR or 4 percent of global turnover under GDPR, and 250 crore INR under India DPDP), and platform policies are enforced automatically.
 
 This repository resolves compliance at the codebase level, providing:
-*   **AI Guardrails (.cursorrules)** - Instruct Cursor, Windsurf, or Copilot agents to generate compliant code.
+*   **Universal AI Rules (.airules)** - Instruct Cursor, Windsurf, Copilot, Aider, or other AI agents to generate compliant code.
 *   **Claude / MCP Skill (SKILL.md)** - A packaged skill folder for Claude Desktop or local LLM assistants.
 *   **2026/2027 Global Updates** - Updated for India DPDP Rules, the European Accessibility Act (EAA), and recent Play Store identity verification deadlines.
 
@@ -28,7 +28,7 @@ This repository resolves compliance at the codebase level, providing:
 ```
 Repository Root
 ├── README.md (Landing)
-├── .cursorrules (AI Guidelines)
+├── .airules (Universal AI Guidelines)
 ├── SKILL.md (Claude Skill Orchestrator)
 └── references/ (Detailed compliance files)
     ├── ad-monetization.md
@@ -43,9 +43,9 @@ Repository Root
 
 ---
 
-## 1. Cursor/Windsurf Rules (.cursorrules)
+## 1. Universal AI Rules (.airules)
 
-Enforce compliance and accessibility by default during AI generation. Drop the `.cursorrules` file into the root of your project:
+Enforce compliance and accessibility by default during AI generation. Drop the `.airules` file into the root of your project:
 *   **Automates** permission audits before they are added to AndroidManifest.xml.
 *   **Enforces** safe data handling and storage encryption.
 *   **Ensures** TalkBack/VoiceOver compatibility in Compose and XML UIs.

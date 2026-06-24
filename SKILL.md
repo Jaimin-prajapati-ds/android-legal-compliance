@@ -9,7 +9,7 @@ Engineering-facing compliance reference for indie/solo Android developers. Goal:
 
 ## How to use this skill
 
-1. **AI Integration** — Place the `.cursorrules` file in the root of your project so your AI agent automatically enforces these guidelines during development.
+1. **AI Integration** — Place the `.airules` file in the root of your project so your AI agent automatically enforces these guidelines during development.
 2. **Data Inventory** — Answer the questions in Step 1 below for the specific app.
 3. **Decision Tree** — Step 2 tells you which legal regimes actually apply to this app.
 4. **Universal Baseline** — Step 3 applies to every app, no exceptions.
@@ -85,7 +85,7 @@ Read the matching file only when Step 2 flagged it relevant:
 
 - [ ] Data inventory documented for this app/version
 - [ ] List of applicable jurisdictions/regimes generated from Step 2
-- [ ] `.cursorrules` placed in project root for automated AI guardrails
+- [ ] `.airules` placed in project root for automated AI guardrails
 - [ ] Privacy Policy dynamically generated and hosted at a stable URL
 - [ ] Data Safety form answers drafted, matching the actual binary
 - [ ] Account deletion flow (in-app + web) implemented if accounts exist
