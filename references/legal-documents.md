@@ -4,7 +4,7 @@ To comply with the user request to avoid static templates and support AI-driven 
 
 ---
 
-## 📄 Privacy Policy Dynamic Generation
+## Privacy Policy Dynamic Generation
 
 When creating a Privacy Policy, the AI must collect the app's metadata (from the Data Inventory step) and compile the following mandatory sections:
 
@@ -42,7 +42,7 @@ When creating a Privacy Policy, the AI must collect the app's metadata (from the
 
 ---
 
-## 📄 Terms of Service / EULA Dynamic Generation
+## Terms of Service / EULA Dynamic Generation
 
 When generating the Terms of Service, the AI must ensure the following clauses are drafted:
 
