@@ -9,7 +9,7 @@ COLOR_RESET = "\033[0m"
 COLOR_BOLD = "\033[1m"
 COLOR_RED = "\033[91m"
 COLOR_YELLOW = "\033[93m"
-COLOR_GREEN = "\033[92m"
+COLOR_GREEN = "\033[92"
 COLOR_BLUE = "\033[94m"
 
 def print_header(title):
@@ -57,10 +57,12 @@ class ComplianceAuditor:
         print_error(title, desc)
 
     def scan_files(self):
-        """Scans the directory for manifest, gradle, and network security files."""
+        """Scans the directory recursively for manifest, gradle, and network security files."""
+        ignored_dirs = {".gradle", ".git", "build", "bin", "obj", "mock_project", "node_modules"}
         for root, dirs, files in os.walk(self.project_dir):
-            if any(p in root.replace(self.project_dir, "") for p in [".gradle", ".git", "build", "app/build", "bin", "obj", "mock_project"]):
-                continue
+            # Exclude ignored directories in-place to prevent scanning them
+            dirs[:] = [d for d in dirs if d not in ignored_dirs]
+            
             for file in files:
                 full_path = os.path.join(root, file)
                 if file == "AndroidManifest.xml":
@@ -87,9 +89,9 @@ class ComplianceAuditor:
 
         # Print final summary
         print_header("AUDIT SUMMARY")
-        print(f"  Passed Checks:  {COLOR_GREEN}{self.passes_count}{COLOR_RESET}")
-        print(f"  Warnings:       {COLOR_YELLOW}{self.warnings_count}{COLOR_RESET}")
-        print(f"  Critical Risks: {COLOR_RED}{self.violations_count}{COLOR_RESET}")
+        print(f"  Passed Checks:  {self.passes_count}")
+        print(f"  Warnings:       {self.warnings_count}")
+        print(f"  Critical Risks: {self.violations_count}")
 
         if self.violations_count > 0:
             print(f"\n{COLOR_RED}{COLOR_BOLD}[FAIL] COMPLIANCE FAIL: Your app has critical risk factors that may lead to Play Store rejection or legal fines.{COLOR_RESET}")
@@ -253,7 +255,7 @@ class ComplianceAuditor:
         try:
             with open(report_path, "w", encoding="utf-8") as f:
                 f.write("# Android Application Compliance Checklist\n\n")
-                f.write("This checklist was automatically generated based on the compliance audit scan of your project files.\n\n")
+                f.write("This checklist was automatically generated based on the compliance audit scan of your project data.\n\n")
                 
                 f.write("## Status Summary\n\n")
                 f.write(f"- Critical Risks: {self.violations_count}\n")

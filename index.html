@@ -37,7 +37,7 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -45,18 +45,52 @@
             margin-bottom: 2rem;
             border-bottom: 1px solid var(--border);
             padding-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         h1 {
-            font-size: 2.25rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--text-main);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
         }
 
         p.subtitle {
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: 1rem;
+        }
+
+        .actions-group {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: var(--text-main);
+            border: none;
+            padding: 0.6rem 1.2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-success {
+            background-color: var(--accent-success);
+        }
+
+        .btn-success:hover {
+            background-color: #059669;
         }
 
         .grid {
@@ -65,9 +99,9 @@
             gap: 1.5rem;
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 992px) {
             .grid {
-                grid-template-columns: 300px 1fr;
+                grid-template-columns: 320px 1fr;
             }
         }
 
@@ -77,10 +111,13 @@
             border-radius: 0.5rem;
             padding: 1.5rem;
             align-self: start;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
-        .sidebar h2 {
-            font-size: 1.25rem;
+        .sidebar-section h2 {
+            font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 1rem;
             border-bottom: 1px solid var(--border);
@@ -88,15 +125,33 @@
         }
 
         .form-group {
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
         }
 
         .form-group label {
             display: block;
-            font-size: 0.875rem;
-            font-weight: 500;
+            font-size: 0.8rem;
+            font-weight: 600;
             color: var(--text-muted);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-control {
+            width: 100%;
+            background-color: var(--bg-main);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
         }
 
         .checkbox-group {
@@ -125,25 +180,23 @@
         }
 
         .score-box {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
             text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
         }
 
         .score-circle {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             border: 5px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1rem auto;
-            font-size: 1.5rem;
+            margin: 0 auto 0.75rem auto;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--primary);
-            transition: border-color 0.3s;
         }
 
         .progress-bar-container {
@@ -173,7 +226,6 @@
             border: 1px solid var(--border);
             border-radius: 0.5rem;
             padding: 1.5rem;
-            transition: display 0.3s;
         }
 
         .card.hidden {
@@ -181,22 +233,21 @@
         }
 
         .card-header {
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.75rem;
         }
 
         .card h3 {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--text-main);
         }
 
         .card-desc {
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             margin-top: 0.25rem;
-            margin-bottom: 0.75rem;
         }
 
         .checklist-items {
@@ -247,52 +298,95 @@
             font-size: 0.8rem;
             color: var(--primary);
             font-weight: 500;
-            margin-top: 0.25rem;
+            margin-top: 0.15rem;
+        }
+
+        /* Modal / Panel for Policy Output */
+        .policy-panel {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .policy-textarea {
+            width: 100%;
+            height: 300px;
+            background-color: var(--bg-main);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            font-family: monospace;
+            font-size: 0.85rem;
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            resize: vertical;
+            margin-bottom: 1rem;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Android Legal and Compliance Auditor</h1>
-            <p class="subtitle">Select your application configuration below to generate a tailored compliance checklist.</p>
+            <div>
+                <h1>Android Legal and Compliance Auditor</h1>
+                <p class="subtitle">Tailor, verify, and generate compliance files locally for Android releases.</p>
+            </div>
+            <div class="actions-group">
+                <button class="btn" onclick="exportChecklistReport()">Export Report</button>
+                <button class="btn btn-success" onclick="generatePrivacyPolicy()">Generate Privacy Policy</button>
+            </div>
         </header>
 
         <div class="grid">
             <aside class="sidebar">
-                <h2>Application Config</h2>
-                
-                <div class="form-group">
-                    <label>Distribution Regions</label>
+                <div class="sidebar-section">
+                    <h2>Metadata</h2>
+                    <div class="form-group">
+                        <label for="meta-app-name">Application Name</label>
+                        <input type="text" id="meta-app-name" class="form-control" placeholder="e.g. SecureApp" oninput="saveMetadata()">
+                    </div>
+                    <div class="form-group">
+                        <label for="meta-dev-name">Developer / Entity Name</label>
+                        <input type="text" id="meta-dev-name" class="form-control" placeholder="e.g. Acme Corp" oninput="saveMetadata()">
+                    </div>
+                    <div class="form-group">
+                        <label for="meta-email">Contact Email</label>
+                        <input type="email" id="meta-email" class="form-control" placeholder="e.g. privacy@acme.com" oninput="saveMetadata()">
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h2>Jurisdictions</h2>
                     <div class="checkbox-group">
                         <label class="checkbox-item">
-                            <input type="checkbox" id="config-eea" onchange="toggleSections()">
-                            <span>EEA / UK / Switzerland (GDPR)</span>
+                            <input type="checkbox" id="config-eea" onchange="updateConfigAndUI()">
+                            <span>EEA / UK / Swiss (GDPR)</span>
                         </label>
                         <label class="checkbox-item">
-                            <input type="checkbox" id="config-india" onchange="toggleSections()">
+                            <input type="checkbox" id="config-india" onchange="updateConfigAndUI()">
                             <span>India (DPDP Act)</span>
                         </label>
                         <label class="checkbox-item">
-                            <input type="checkbox" id="config-us" onchange="toggleSections()">
+                            <input type="checkbox" id="config-us" onchange="updateConfigAndUI()">
                             <span>United States (CCPA/CPRA)</span>
                         </label>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label>App Features</label>
+                <div class="sidebar-section">
+                    <h2>Audience and Setup</h2>
                     <div class="checkbox-group">
                         <label class="checkbox-item">
-                            <input type="checkbox" id="config-ads" onchange="toggleSections()">
-                            <span>Contains Advertisements</span>
+                            <input type="checkbox" id="config-ads" onchange="updateConfigAndUI()">
+                            <span>Contains Ads (AdMob)</span>
                         </label>
                         <label class="checkbox-item">
-                            <input type="checkbox" id="config-children" onchange="toggleSections()">
-                            <span>Target Audience: Children</span>
+                            <input type="checkbox" id="config-children" onchange="updateConfigAndUI()">
+                            <span>Targets Children</span>
                         </label>
                         <label class="checkbox-item">
-                            <input type="checkbox" id="config-accounts" onchange="toggleSections()">
+                            <input type="checkbox" id="config-accounts" onchange="updateConfigAndUI()">
                             <span>Has User Accounts</span>
                         </label>
                     </div>
@@ -316,7 +410,7 @@
                     </div>
                     <div class="checklist-items">
                         <div class="checklist-row">
-                            <input type="checkbox" id="uni-1" class="checklist-cb" onchange="calculateScore()">
+                            <input type="checkbox" id="uni-1" class="checklist-cb" onchange="saveChecklistState()">
                             <div class="checklist-text">
                                 <span class="checklist-title">Provide public Privacy Policy URL</span>
                                 <span class="checklist-detail">Must name the developer entity exactly as it appears in Play Console and list data practices.</span>
@@ -324,7 +418,7 @@
                             </div>
                         </div>
                         <div class="checklist-row">
-                            <input type="checkbox" id="uni-2" class="checklist-cb" onchange="calculateScore()">
+                            <input type="checkbox" id="uni-2" class="checklist-cb" onchange="saveChecklistState()">
                             <div class="checklist-text">
                                 <span class="checklist-title">Fill out Play Console Data Safety form</span>
                                 <span class="checklist-detail">Must declare all collected and shared data types (including those collected by third-party SDKs).</span>
@@ -332,7 +426,7 @@
                             </div>
                         </div>
                         <div class="checklist-row">
-                            <input type="checkbox" id="uni-3" class="checklist-cb" onchange="calculateScore()">
+                            <input type="checkbox" id="uni-3" class="checklist-cb" onchange="saveChecklistState()">
                             <div class="checklist-text">
                                 <span class="checklist-title">Verify target SDK version</span>
                                 <span class="checklist-detail">New apps and updates must target API 34 (Android 14) or higher (API 35/36 by late 2026).</span>
@@ -350,7 +444,7 @@
                     </div>
                     <div class="checklist-items">
                         <div class="checklist-row">
-                            <input type="checkbox" id="acc-1" class="checklist-cb" onchange="calculateScore()">
+                            <input type="checkbox" id="acc-1" class="checklist-cb" onchange="saveChecklistState()">
                             <div class="checklist-text">
                                 <span class="checklist-title">Implement in-app account deletion</span>
                                 <span class="checklist-detail">A direct option inside the application settings or profile page allowing users to trigger account deletion.</span>
@@ -358,7 +452,7 @@
                             </div>
                         </div>
                         <div class="checklist-row">
-                            <input type="checkbox" id="acc-2" class="checklist-cb" onchange="calculateScore()">
+                            <input type="checkbox" id="acc-2" class="checklist-cb" onchange="saveChecklistState()">
                             <div class="checklist-text">
                                 <span class="checklist-title">Implement web account deletion link</span>
                                 <span class="checklist-detail">A working website address where users can request deletion of account and data without needing to install the app.</span>
@@ -376,7 +470,7 @@
                     </div>
                     <div class="checklist-items">
                         <div class="checklist-row">
-                            <input type="checkbox" id="eea-1" class="checklist-cb" onchange="calculateScore()">
+                            <input type="checkbox" id="eea-1" class="checklist-cb" onchange="saveChecklistState()">
                             <div class="checklist-text">
                                 <span class="checklist-title">Establish legal basis for processing</span>
                                 <span class="checklist-detail">Ensure every personal data collection is backed by consent, contractual necessity, or legitimate interest.</span>
@@ -384,7 +478,7 @@
                             </div>
                         </div>
                         <div class="checklist-row">
-                            <input type="checkbox" id="eea-2" class="checklist-cb" onchange="calculateScore()">
+                            <input type="checkbox" id="eea-2" class="checklist-cb" onchange="saveChecklistState()">
                             <div class="checklist-text">
                                 <span class="checklist-title">Implement user rights request channel</span>
                                 <span class="checklist-detail">Provide a mechanism for users to request data export, correction, or restrictions.</span>
@@ -402,7 +496,7 @@
                     </div>
                     <div class="checklist-items">
                         <div class="checklist-row">
-                            <input type="checkbox" id="ind-1" class="checklist-cb" onchange="calculateScore()">
+                            <input type="checkbox" id="ind-1" class="checklist-cb" onchange="saveChecklistState()">
                             <div class="checklist-text">
                                 <span class="checklist-title">Maintain data processing logs for 1 year</span>
                                 <span class="checklist-detail">Under DPDP Rules 2025/2026, processing fiduciaries must retain backend transaction and processing logs for at least 1 year.</span>
@@ -410,7 +504,7 @@
                             </div>
                         </div>
                         <div class="checklist-row">
-                            <input type="checkbox" id="ind-2" class="checklist-cb" onchange="calculateScore()">
+                            <input type="checkbox" id="ind-2" class="checklist-cb" onchange="saveChecklistState()">
                             <div class="checklist-text">
                                 <span class="checklist-title">Appoint a Grievance Officer</span>
                                 <span class="checklist-detail">Designate a grievance redressal contact name and publish it in the Privacy Policy.</span>
@@ -428,7 +522,7 @@
                     </div>
                     <div class="checklist-items">
                         <div class="checklist-row">
-                            <input type="checkbox" id="us-1" class="checklist-cb" onchange="calculateScore()">
+                            <input type="checkbox" id="us-1" class="checklist-cb" onchange="saveChecklistState()">
                             <div class="checklist-text">
                                 <span class="checklist-title">Support Opt-Out of sale or sharing</span>
                                 <span class="checklist-detail">Allow users to opt-out of data sharing for targeted advertising.</span>
@@ -446,7 +540,7 @@
                     </div>
                     <div class="checklist-items">
                         <div class="checklist-row">
-                            <input type="checkbox" id="ad-1" class="checklist-cb" onchange="calculateScore()">
+                            <input type="checkbox" id="ad-1" class="checklist-cb" onchange="saveChecklistState()">
                             <div class="checklist-text">
                                 <span class="checklist-title">Integrate Google-certified CMP (UMP SDK)</span>
                                 <span class="checklist-detail">Collect certified consent for ads in the European Economic Area.</span>
@@ -464,7 +558,7 @@
                     </div>
                     <div class="checklist-items">
                         <div class="checklist-row">
-                            <input type="checkbox" id="child-1" class="checklist-cb" onchange="calculateScore()">
+                            <input type="checkbox" id="child-1" class="checklist-cb" onchange="saveChecklistState()">
                             <div class="checklist-text">
                                 <span class="checklist-title">Configure COPPA Request Settings</span>
                                 <span class="checklist-detail">Tag ad and analytics requests directed to children under 13.</span>
@@ -472,7 +566,7 @@
                             </div>
                         </div>
                         <div class="checklist-row">
-                            <input type="checkbox" id="child-2" class="checklist-cb" onchange="calculateScore()">
+                            <input type="checkbox" id="child-2" class="checklist-cb" onchange="saveChecklistState()">
                             <div class="checklist-text">
                                 <span class="checklist-title">Verify approved SDKs</span>
                                 <span class="checklist-detail">Ensure all integrated third-party libraries are certified on the Play Store Families Policy index.</span>
@@ -490,7 +584,7 @@
                     </div>
                     <div class="checklist-items">
                         <div class="checklist-row">
-                            <input type="checkbox" id="sec-1" class="checklist-cb" onchange="calculateScore()">
+                            <input type="checkbox" id="sec-1" class="checklist-cb" onchange="saveChecklistState()">
                             <div class="checklist-text">
                                 <span class="checklist-title">Enforce HTTPS traffic</span>
                                 <span class="checklist-detail">Verify cleartext HTTP traffic is blocked in production manifests.</span>
@@ -498,7 +592,7 @@
                             </div>
                         </div>
                         <div class="checklist-row">
-                            <input type="checkbox" id="sec-2" class="checklist-cb" onchange="calculateScore()">
+                            <input type="checkbox" id="sec-2" class="checklist-cb" onchange="saveChecklistState()">
                             <div class="checklist-text">
                                 <span class="checklist-title">Encrypt local storage sensitive data</span>
                                 <span class="checklist-detail">Use Jetpack EncryptedSharedPreferences for credentials and tokens.</span>
@@ -507,11 +601,100 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Policy Generator Output Panel -->
+                <div class="policy-panel hidden" id="policy-panel">
+                    <h3>Generated Privacy Policy</h3>
+                    <p class="card-desc" style="margin-bottom: 0.75rem;">Copy this Markdown output and publish it at your Privacy Policy URL.</p>
+                    <textarea class="policy-textarea" id="policy-output" readonly></textarea>
+                    <button class="btn" onclick="downloadPolicyFile()">Download PRIVACY_POLICY.md</button>
+                    <button class="btn" style="background-color: var(--bg-input);" onclick="document.getElementById('policy-panel').classList.add('hidden')">Close</button>
+                </div>
             </main>
         </div>
     </div>
 
     <script>
+        // Load metadata and config on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadMetadata();
+            loadConfig();
+            toggleSections();
+            loadChecklistState();
+        });
+
+        function saveMetadata() {
+            localStorage.setItem('meta-app-name', document.getElementById('meta-app-name').value);
+            localStorage.setItem('meta-dev-name', document.getElementById('meta-dev-name').value);
+            localStorage.setItem('meta-email', document.getElementById('meta-email').value);
+        }
+
+        function loadMetadata() {
+            document.getElementById('meta-app-name').value = localStorage.getItem('meta-app-name') || '';
+            document.getElementById('meta-dev-name').value = localStorage.getItem('meta-dev-name') || '';
+            document.getElementById('meta-email').value = localStorage.getItem('meta-email') || '';
+        }
+
+        function saveConfig() {
+            const config = {
+                eea: document.getElementById('config-eea').checked,
+                india: document.getElementById('config-india').checked,
+                us: document.getElementById('config-us').checked,
+                ads: document.getElementById('config-ads').checked,
+                children: document.getElementById('config-children').checked,
+                accounts: document.getElementById('config-accounts').checked
+            };
+            localStorage.setItem('compliance-config', JSON.stringify(config));
+        }
+
+        function loadConfig() {
+            try {
+                const config = JSON.parse(localStorage.getItem('compliance-config'));
+                if (config) {
+                    document.getElementById('config-eea').checked = !!config.eea;
+                    document.getElementById('config-india').checked = !!config.india;
+                    document.getElementById('config-us').checked = !!config.us;
+                    document.getElementById('config-ads').checked = !!config.ads;
+                    document.getElementById('config-children').checked = !!config.children;
+                    document.getElementById('config-accounts').checked = !!config.accounts;
+                }
+            } catch (e) {
+                console.error("Failed to load config", e);
+            }
+        }
+
+        function saveChecklistState() {
+            const checkboxes = document.querySelectorAll('.checklist-cb');
+            const state = {};
+            checkboxes.forEach(cb => {
+                state[cb.id] = cb.checked;
+            });
+            localStorage.setItem('compliance-checklist-state', JSON.stringify(state));
+            calculateScore();
+        }
+
+        function loadChecklistState() {
+            try {
+                const state = JSON.parse(localStorage.getItem('compliance-checklist-state'));
+                if (state) {
+                    for (const [id, checked] of Object.entries(state)) {
+                        const cb = document.getElementById(id);
+                        if (cb) {
+                            cb.checked = checked;
+                        }
+                    }
+                }
+            } catch (e) {
+                console.error("Failed to load checklist state", e);
+            }
+            calculateScore();
+        }
+
+        function updateConfigAndUI() {
+            saveConfig();
+            toggleSections();
+        }
+
         function toggleSections() {
             const sections = {
                 'section-eea': document.getElementById('config-eea').checked,
@@ -528,12 +711,11 @@
                     element.classList.remove('hidden');
                 } else {
                     element.classList.add('hidden');
-                    // Uncheck hidden checkboxes
                     const cbs = element.querySelectorAll('.checklist-cb');
                     cbs.forEach(cb => cb.checked = false);
                 }
             }
-            calculateScore();
+            saveChecklistState();
         }
 
         function calculateScore() {
@@ -556,8 +738,137 @@
             document.getElementById('score-progress').style.width = score + '%';
         }
 
-        // Initialize display
-        toggleSections();
+        function generatePrivacyPolicy() {
+            const appName = document.getElementById('meta-app-name').value || "[App Name]";
+            const devName = document.getElementById('meta-dev-name').value || "[Developer Name]";
+            const email = document.getElementById('meta-email').value || "[Privacy Email]";
+
+            const configEea = document.getElementById('config-eea').checked;
+            const configIndia = document.getElementById('config-india').checked;
+            const configUs = document.getElementById('config-us').checked;
+            const configAds = document.getElementById('config-ads').checked;
+            const configChildren = document.getElementById('config-children').checked;
+            const configAccounts = document.getElementById('config-accounts').checked;
+
+            const date = new Date().toLocaleDateString();
+
+            let policy = `# Privacy Policy for ${appName}\n\n`;
+            policy += `Effective Date: ${date}\n\n`;
+            policy += `This Privacy Policy outlines how ${devName} collects, processes, and stores data associated with the use of the mobile application ${appName}.\n\n`;
+
+            policy += `## 1. Identity and Contact Information\n\n`;
+            policy += `- **Developer Entity**: ${devName}\n`;
+            policy += `- **Contact Mechanism**: ${email}\n\n`;
+            if (configIndia) {
+                policy += `### Grievance Redressal Officer (India DPDP Act)\n`;
+                policy += `To register grievances under the Digital Personal Data Protection Act, contact our Grievance Officer at:\n`;
+                policy += `- **Title**: Grievance Officer\n`;
+                policy += `- **Email**: ${email}\n\n`;
+            }
+
+            policy += `## 2. Data Collected and Processing Purpose\n\n`;
+            policy += `We adhere to the data minimization principle. We collect data only for the purposes outlined below:\n\n`;
+            if (configAccounts) {
+                policy += `- **Account Registration Data**: We collect email addresses and user-provided profile credentials to enable secure login and manage your account features.\n`;
+            }
+            if (configAds) {
+                policy += `- **Advertising Identifiers**: We collect Google Advertising ID (AAID) to serve ads and analyze campaign performance.\n`;
+            }
+            policy += `- **Device Diagnostics**: We collect crash logs and performance indicators to improve application stability.\n\n`;
+
+            if (configEea) {
+                policy += `## 3. European Privacy Rights (GDPR)\n\n`;
+                policy += `If you are in the European Economic Area (EEA), UK, or Switzerland, you have the following rights:\n`;
+                policy += `- Right to access, correct, delete, or restrict your personal data.\n`;
+                policy += `- Right to withdraw consent at any time.\n`;
+                policy += `- Right to data portability.\n\n`;
+            }
+
+            if (configUs) {
+                policy += `## 4. United States Privacy Rights (CCPA/CPRA)\n\n`;
+                policy += `If you are a resident of California or states with comparable statutes, you have the right to:\n`;
+                policy += `- Request disclosure of what personal information is collected, sold, or shared.\n`;
+                policy += `- Opt-out of the sharing of personal information for targeted advertising.\n\n`;
+            }
+
+            policy += `## 5. Third-Party Services and Data Sharing\n\n`;
+            policy += `We share data with the following categories of processors to perform services on our behalf:\n\n`;
+            if (configAds) {
+                policy += `- **Ad Networks**: Google AdMob and mediation partners to deliver contextual and targeted advertisements.\n`;
+            }
+            policy += `- **Crash Reporting**: Firebase Crashlytics to diagnose system errors.\n\n`;
+
+            policy += `## 6. Retention and Deletion\n\n`;
+            policy += `Personal data is stored only as long as necessary to fulfill the purposes described in this policy.\n\n`;
+            if (configAccounts) {
+                policy += `### Account Deletion Instructions\n`;
+                policy += `You can request the deletion of your account and personal data at any time by:\n`;
+                policy += `1. Accessing the settings panel within the application and selecting "Delete Account".\n`;
+                policy += `2. Visiting our public request portal: [Account Deletion Form](${email})\n\n`;
+            }
+            if (configIndia) {
+                policy += `### Retention of Logs\n`;
+                policy += `Under the DPDP Rules 2025, system, transaction, and processing logs associated with user transactions are retained for a minimum of 1 year.\n\n`;
+            }
+
+            if (configChildren) {
+                policy += `## 7. Children's Privacy Policy\n\n`;
+                policy += `We restrict data collection for users identified as children. We do not knowingly collect personal identifiers from users under the age of 13 without verifiable parental consent.\n\n`;
+            }
+
+            document.getElementById('policy-output').value = policy;
+            document.getElementById('policy-panel').classList.remove('hidden');
+            document.getElementById('policy-panel').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function downloadPolicyFile() {
+            const text = document.getElementById('policy-output').value;
+            const blob = new Blob([text], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'PRIVACY_POLICY.md';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function exportChecklistReport() {
+            const appName = document.getElementById('meta-app-name').value || "Unnamed App";
+            const devName = document.getElementById('meta-dev-name').value || "Unnamed Developer";
+            
+            const activeCards = document.querySelectorAll('.card:not(.hidden)');
+            let md = `# Compliance Checklist Report for ${appName}\n\n`;
+            md += `Developer: ${devName}\n`;
+            md += `Generated: ${new Date().toLocaleDateString()}\n\n`;
+            md += `## Checklist Items Status\n\n`;
+
+            activeCards.forEach(card => {
+                const header = card.querySelector('h3').textContent;
+                md += `### ${header}\n\n`;
+                
+                const rows = card.querySelectorAll('.checklist-row');
+                rows.forEach(row => {
+                    const cb = row.querySelector('.checklist-cb');
+                    const title = row.querySelector('.checklist-title').textContent;
+                    const detail = row.querySelector('.checklist-detail').textContent;
+                    const status = cb.checked ? "[x]" : "[ ]";
+                    md += `- ${status} **${title}** - *${detail}*\n`;
+                });
+                md += "\n";
+            });
+
+            const blob = new Blob([md], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'COMPLIANCE_REPORT.md';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
     </script>
 </body>
 </html>
