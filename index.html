@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android Legal and Compliance Auditor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --bg-input: #334155;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --accent-success: #10b981;
+            --accent-warning: #f59e0b;
+            --accent-danger: #ef4444;
+            --border: #475569;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: 300px 1fr;
+            }
+        }
+
+        .sidebar {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            align-self: start;
+        }
+
+        .sidebar h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 1.1rem;
+            height: 1.1rem;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .checkbox-item span {
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        .score-box {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .score-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 5px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem auto;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            transition: border-color 0.3s;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            background-color: var(--bg-input);
+            height: 8px;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            transition: display 0.3s;
+        }
+
+        .card.hidden {
+            display: none;
+        }
+
+        .card-header {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .card-desc {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .checklist-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .checklist-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            transition: background-color 0.2s;
+        }
+
+        .checklist-row:hover {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .checklist-row input[type="checkbox"] {
+            margin-top: 0.25rem;
+            width: 1.15rem;
+            height: 1.15rem;
+            accent-color: var(--accent-success);
+            cursor: pointer;
+        }
+
+        .checklist-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .checklist-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .checklist-detail {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .checklist-action {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 500;
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Android Legal and Compliance Auditor</h1>
+            <p class="subtitle">Select your application configuration below to generate a tailored compliance checklist.</p>
+        </header>
+
+        <div class="grid">
+            <aside class="sidebar">
+                <h2>Application Config</h2>
+                
+                <div class="form-group">
+                    <label>Distribution Regions</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="config-eea" onchange="toggleSections()">
+                            <span>EEA / UK / Switzerland (GDPR)</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="config-india" onchange="toggleSections()">
+                            <span>India (DPDP Act)</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="config-us" onchange="toggleSections()">
+                            <span>United States (CCPA/CPRA)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>App Features</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="config-ads" onchange="toggleSections()">
+                            <span>Contains Advertisements</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="config-children" onchange="toggleSections()">
+                            <span>Target Audience: Children</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="config-accounts" onchange="toggleSections()">
+                            <span>Has User Accounts</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="score-box">
+                    <h3>Compliance Score</h3>
+                    <div class="score-circle" id="score-display">0%</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="score-progress"></div>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <!-- Card 1: Universal Baseline -->
+                <div class="card" id="section-universal">
+                    <div class="card-header">
+                        <h3>Universal Requirements</h3>
+                        <p class="card-desc">Mandatory for all applications published on Google Play.</p>
+                    </div>
+                    <div class="checklist-items">
+                        <div class="checklist-row">
+                            <input type="checkbox" id="uni-1" class="checklist-cb" onchange="calculateScore()">
+                            <div class="checklist-text">
+                                <span class="checklist-title">Provide public Privacy Policy URL</span>
+                                <span class="checklist-detail">Must name the developer entity exactly as it appears in Play Console and list data practices.</span>
+                                <span class="checklist-action">Action: Enter stable URL in Play Console App Content.</span>
+                            </div>
+                        </div>
+                        <div class="checklist-row">
+                            <input type="checkbox" id="uni-2" class="checklist-cb" onchange="calculateScore()">
+                            <div class="checklist-text">
+                                <span class="checklist-title">Fill out Play Console Data Safety form</span>
+                                <span class="checklist-detail">Must declare all collected and shared data types (including those collected by third-party SDKs).</span>
+                                <span class="checklist-action">Action: Complete questionnaire in Play Console.</span>
+                            </div>
+                        </div>
+                        <div class="checklist-row">
+                            <input type="checkbox" id="uni-3" class="checklist-cb" onchange="calculateScore()">
+                            <div class="checklist-text">
+                                <span class="checklist-title">Verify target SDK version</span>
+                                <span class="checklist-detail">New apps and updates must target API 34 (Android 14) or higher (API 35/36 by late 2026).</span>
+                                <span class="checklist-action">Action: Update targetSdk in build.gradle.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: User Accounts (Conditional) -->
+                <div class="card hidden" id="section-accounts">
+                    <div class="card-header">
+                        <h3>User Accounts and Data Deletion</h3>
+                        <p class="card-desc">Required if users can register or log in.</p>
+                    </div>
+                    <div class="checklist-items">
+                        <div class="checklist-row">
+                            <input type="checkbox" id="acc-1" class="checklist-cb" onchange="calculateScore()">
+                            <div class="checklist-text">
+                                <span class="checklist-title">Implement in-app account deletion</span>
+                                <span class="checklist-detail">A direct option inside the application settings or profile page allowing users to trigger account deletion.</span>
+                                <span class="checklist-action">Action: Add deletion button and call backend delete functions.</span>
+                            </div>
+                        </div>
+                        <div class="checklist-row">
+                            <input type="checkbox" id="acc-2" class="checklist-cb" onchange="calculateScore()">
+                            <div class="checklist-text">
+                                <span class="checklist-title">Implement web account deletion link</span>
+                                <span class="checklist-detail">A working website address where users can request deletion of account and data without needing to install the app.</span>
+                                <span class="checklist-action">Action: Deploy web form and register URL in Play Console.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: GDPR Compliance (Conditional) -->
+                <div class="card hidden" id="section-eea">
+                    <div class="card-header">
+                        <h3>EEA, UK, and Switzerland (GDPR)</h3>
+                        <p class="card-desc">Obligations when distributing to users in Europe.</p>
+                    </div>
+                    <div class="checklist-items">
+                        <div class="checklist-row">
+                            <input type="checkbox" id="eea-1" class="checklist-cb" onchange="calculateScore()">
+                            <div class="checklist-text">
+                                <span class="checklist-title">Establish legal basis for processing</span>
+                                <span class="checklist-detail">Ensure every personal data collection is backed by consent, contractual necessity, or legitimate interest.</span>
+                                <span class="checklist-action">Action: Document legal bases in Privacy Policy.</span>
+                            </div>
+                        </div>
+                        <div class="checklist-row">
+                            <input type="checkbox" id="eea-2" class="checklist-cb" onchange="calculateScore()">
+                            <div class="checklist-text">
+                                <span class="checklist-title">Implement user rights request channel</span>
+                                <span class="checklist-detail">Provide a mechanism for users to request data export, correction, or restrictions.</span>
+                                <span class="checklist-action">Action: Set up email address or request portal.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: India DPDP Compliance (Conditional) -->
+                <div class="card hidden" id="section-india">
+                    <div class="card-header">
+                        <h3>India (DPDP Act)</h3>
+                        <p class="card-desc">Obligations when distributing to users in India.</p>
+                    </div>
+                    <div class="checklist-items">
+                        <div class="checklist-row">
+                            <input type="checkbox" id="ind-1" class="checklist-cb" onchange="calculateScore()">
+                            <div class="checklist-text">
+                                <span class="checklist-title">Maintain data processing logs for 1 year</span>
+                                <span class="checklist-detail">Under DPDP Rules 2025/2026, processing fiduciaries must retain backend transaction and processing logs for at least 1 year.</span>
+                                <span class="checklist-action">Action: Configure cloud log retention to 365 days.</span>
+                            </div>
+                        </div>
+                        <div class="checklist-row">
+                            <input type="checkbox" id="ind-2" class="checklist-cb" onchange="calculateScore()">
+                            <div class="checklist-text">
+                                <span class="checklist-title">Appoint a Grievance Officer</span>
+                                <span class="checklist-detail">Designate a grievance redressal contact name and publish it in the Privacy Policy.</span>
+                                <span class="checklist-action">Action: Add Grievance Officer details to Privacy Policy page.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: US Privacy Laws (Conditional) -->
+                <div class="card hidden" id="section-us">
+                    <div class="card-header">
+                        <h3>United States (CCPA/CPRA and State Patchworks)</h3>
+                        <p class="card-desc">Obligations when distributing to users in the United States.</p>
+                    </div>
+                    <div class="checklist-items">
+                        <div class="checklist-row">
+                            <input type="checkbox" id="us-1" class="checklist-cb" onchange="calculateScore()">
+                            <div class="checklist-text">
+                                <span class="checklist-title">Support Opt-Out of sale or sharing</span>
+                                <span class="checklist-detail">Allow users to opt-out of data sharing for targeted advertising.</span>
+                                <span class="checklist-action">Action: Add a "Do Not Sell My Personal Information" link or toggle.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6: Advertisements (Conditional) -->
+                <div class="card hidden" id="section-ads">
+                    <div class="card-header">
+                        <h3>Ad Monetization</h3>
+                        <p class="card-desc">Required if displaying advertising.</p>
+                    </div>
+                    <div class="checklist-items">
+                        <div class="checklist-row">
+                            <input type="checkbox" id="ad-1" class="checklist-cb" onchange="calculateScore()">
+                            <div class="checklist-text">
+                                <span class="checklist-title">Integrate Google-certified CMP (UMP SDK)</span>
+                                <span class="checklist-detail">Collect certified consent for ads in the European Economic Area.</span>
+                                <span class="checklist-action">Action: Implement User Messaging Platform SDK on app launch.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7: Children Target (Conditional) -->
+                <div class="card hidden" id="section-children">
+                    <div class="card-header">
+                        <h3>Children's Privacy (COPPA & Play Families Policy)</h3>
+                        <p class="card-desc">Obligations if the application target audience includes minors.</p>
+                    </div>
+                    <div class="checklist-items">
+                        <div class="checklist-row">
+                            <input type="checkbox" id="child-1" class="checklist-cb" onchange="calculateScore()">
+                            <div class="checklist-text">
+                                <span class="checklist-title">Configure COPPA Request Settings</span>
+                                <span class="checklist-detail">Tag ad and analytics requests directed to children under 13.</span>
+                                <span class="checklist-action">Action: Call setTagForChildDirectedTreatment on AdMob initialization.</span>
+                            </div>
+                        </div>
+                        <div class="checklist-row">
+                            <input type="checkbox" id="child-2" class="checklist-cb" onchange="calculateScore()">
+                            <div class="checklist-text">
+                                <span class="checklist-title">Verify approved SDKs</span>
+                                <span class="checklist-detail">Ensure all integrated third-party libraries are certified on the Play Store Families Policy index.</span>
+                                <span class="checklist-action">Action: Review Play Store approved list.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8: Security Baseline -->
+                <div class="card" id="section-security">
+                    <div class="card-header">
+                        <h3>Security Baseline</h3>
+                        <p class="card-desc">Required to satisfy general security clauses.</p>
+                    </div>
+                    <div class="checklist-items">
+                        <div class="checklist-row">
+                            <input type="checkbox" id="sec-1" class="checklist-cb" onchange="calculateScore()">
+                            <div class="checklist-text">
+                                <span class="checklist-title">Enforce HTTPS traffic</span>
+                                <span class="checklist-detail">Verify cleartext HTTP traffic is blocked in production manifests.</span>
+                                <span class="checklist-action">Action: Set cleartextTrafficPermitted to false in Network Security Config.</span>
+                            </div>
+                        </div>
+                        <div class="checklist-row">
+                            <input type="checkbox" id="sec-2" class="checklist-cb" onchange="calculateScore()">
+                            <div class="checklist-text">
+                                <span class="checklist-title">Encrypt local storage sensitive data</span>
+                                <span class="checklist-detail">Use Jetpack EncryptedSharedPreferences for credentials and tokens.</span>
+                                <span class="checklist-action">Action: Replace standard SharedPreferences references.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        function toggleSections() {
+            const sections = {
+                'section-eea': document.getElementById('config-eea').checked,
+                'section-india': document.getElementById('config-india').checked,
+                'section-us': document.getElementById('config-us').checked,
+                'section-ads': document.getElementById('config-ads').checked,
+                'section-children': document.getElementById('config-children').checked,
+                'section-accounts': document.getElementById('config-accounts').checked
+            };
+
+            for (const [id, visible] of Object.entries(sections)) {
+                const element = document.getElementById(id);
+                if (visible) {
+                    element.classList.remove('hidden');
+                } else {
+                    element.classList.add('hidden');
+                    // Uncheck hidden checkboxes
+                    const cbs = element.querySelectorAll('.checklist-cb');
+                    cbs.forEach(cb => cb.checked = false);
+                }
+            }
+            calculateScore();
+        }
+
+        function calculateScore() {
+            const activeCards = document.querySelectorAll('.card:not(.hidden)');
+            let totalCheckboxes = 0;
+            let checkedCheckboxes = 0;
+
+            activeCards.forEach(card => {
+                const cbs = card.querySelectorAll('.checklist-cb');
+                totalCheckboxes += cbs.length;
+                cbs.forEach(cb => {
+                    if (cb.checked) {
+                        checkedCheckboxes++;
+                    }
+                });
+            });
+
+            const score = totalCheckboxes > 0 ? Math.round((checkedCheckboxes / totalCheckboxes) * 100) : 0;
+            document.getElementById('score-display').textContent = score + '%';
+            document.getElementById('score-progress').style.width = score + '%';
+        }
+
+        // Initialize display
+        toggleSections();
+    </script>
+</body>
+</html>
