@@ -69,6 +69,26 @@ For AI assistants using the Claude desktop app, Antigravity IDE, or similar plat
 
 ---
 
+## Installation
+
+### 1. Global AI Agent Integration (Antigravity IDE / Claude Desktop / local LLMs)
+To install this repository as a global compliance skill in your AI assistant configurations directory, run the single command matching your operating system:
+
+#### Windows PowerShell:
+```powershell
+git clone https://github.com/Jaimin-prajapati-ds/android-legal-compliance.git "$env:USERPROFILE\.gemini\config\skills\android-legal-compliance"
+```
+
+#### macOS and Linux:
+```bash
+git clone https://github.com/Jaimin-prajapati-ds/android-legal-compliance.git ~/.gemini/config/skills/android-legal-compliance
+```
+
+### 2. Project-Level Guardrails (.airules)
+Simply copy the `.airules` file from this repository and drop it into the root directory of your Android project. Your AI coding assistant (Cursor, Windsurf, Aider, Copilot, etc.) will automatically detect the rules and enforce these compliance guardrails during development.
+
+---
+
 ## Global Jurisdictions Covered
 
 *   **European Union and UK:** GDPR / ePrivacy Directive. Mandates strict consent, cookie banners, and user deletion rights.
