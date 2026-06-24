@@ -8,7 +8,7 @@
 
 The developer compliance shield for solo and indie Android developers. This toolkit helps you ship applications that avoid regulatory rejection, fines, or store bans globally.
 
-This repository compiles public regulator guidelines, platform developer policies, and security baselines into actionable engineering guardrails, an interactive browser-based dashboard, and an automated CLI audit script updated for the 2026/2027 compliance landscape.
+This repository compiles public regulator guidelines, platform developer policies, and security baselines into a pure Markdown-based compliance skill and AI guardrails updated for the 2026/2027 compliance landscape.
 
 ---
 
@@ -17,71 +17,55 @@ This repository compiles public regulator guidelines, platform developer policie
 Android developers face strict, extraterritorial laws. Fines can reach significant amounts (such as 20 million EUR or 4 percent of global turnover under GDPR, and 250 crore INR under India DPDP), and platform policies are enforced automatically.
 
 This repository resolves compliance at the codebase level, providing:
-*   **Interactive Web Dashboard (index.html)** - A responsive, browser-based checklist that saves your progress, exports Markdown status reports, and dynamically generates custom Privacy Policies based on your app configuration.
-*   **CLI Scanner (scripts/audit.py)** - Scan your Android project files locally (supporting multi-module architectures) for compliance and security warnings, generating a local checklist report (`COMPLIANCE_REPORT.md`).
 *   **AI Guardrails (.cursorrules)** - Instruct Cursor, Windsurf, or Copilot agents to generate compliant code.
-*   **Global Registration (scripts/register_skill.py)** - A 1-click script to install these rules globally for your local AI coding agents.
+*   **Claude / MCP Skill (SKILL.md)** - A packaged skill folder for Claude Desktop or local LLM assistants.
+*   **2026/2027 Global Updates** - Updated for India DPDP Rules, the European Accessibility Act (EAA), and recent Play Store identity verification deadlines.
 
 ---
 
 ## Directory Structure
 
-```mermaid
-graph TD
-    Root["Repository Root"] --> README["README.md (Landing)"]
-    Root --> WebChecklist["index.html (Web Dashboard)"]
-    Root --> Rules["cursorrules (AI Guidelines)"]
-    Root --> Scripts["scripts/"]
-    Scripts --> Audit["audit.py (CLI Scanner)"]
-    Scripts --> Install["install.py (Project Installer)"]
-    Scripts --> Register["register_skill.py (Global AI Installer)"]
-    Root --> Skill["android-legal-compliance/"]
-    Skill --> SkillMD["SKILL.md (Claude Skill Orchestrator)"]
-    Skill --> Refs["references/ (Detailed compliance files)"]
+```
+Repository Root
+├── README.md (Landing)
+├── .cursorrules (AI Guidelines)
+├── SKILL.md (Claude Skill Orchestrator)
+└── references/ (Detailed compliance files)
+    ├── ad-monetization.md
+    ├── app-store-policy.md
+    ├── children-accessibility.md
+    ├── global-privacy-laws.md
+    ├── legal-documents.md
+    ├── play-store-policy.md
+    ├── prelaunch-audit-checklist.md
+    └── security-baseline.md
 ```
 
 ---
 
-## 💻 1. Interactive Web Dashboard (index.html)
+## 1. Cursor/Windsurf Rules (.cursorrules)
 
-Open `index.html` in your browser. This offline dashboard offers:
-*   **Application Configuration Filters:** Select active jurisdictions (GDPR, India DPDP, CCPA) and app features (Ads, Accounts, Children Target) to dynamically display only relevant requirements.
-*   **Progress Persistence:** Automatically saves your checkbox entries using localStorage.
-*   **Checklist Exporter:** Generate and download a formatted `COMPLIANCE_REPORT.md` checklist representing your current progress.
-*   **Dynamic Privacy Policy Generator:** Generates a custom, compliant Privacy Policy tailored to your app metadata and selected configurations.
-
----
-
-## 💻 2. CLI Scanner (scripts/audit.py)
-
-A standalone compliance auditor that parses your project code recursively (supporting multi-module projects) and outputs findings directly to standard out and a local `COMPLIANCE_REPORT.md` file.
-
-### How to Run
-```bash
-python scripts/audit.py /path/to/your/android/project
-```
-
----
-
-## 🤖 3. Global AI Registration (scripts/register_skill.py)
-
-Install this compliance shield globally on your machine so that AI coding agents automatically consult it for any workspace you open.
-
-### How to Run
-```bash
-python scripts/register_skill.py
-```
-
----
-
-## 🤖 4. Cursor/Windsurf Rules (.cursorrules)
-
-Enforce compliance and accessibility by default during AI generation. Drop the .cursorrules file into the root of your project:
+Enforce compliance and accessibility by default during AI generation. Drop the `.cursorrules` file into the root of your project:
 *   **Automates** permission audits before they are added to AndroidManifest.xml.
-*   **Enforces** safe database transactions using encrypted shared preferences.
+*   **Enforces** safe data handling and storage encryption.
 *   **Ensures** TalkBack/VoiceOver compatibility in Compose and XML UIs.
-*   **Flags** insecure code paths before they are built.
-*   **Supports Slash Commands:** Type `/privacypolicy` or `/terms` in the editor chat for dynamic code generation.
+*   **Supports Slash Commands:** Type `/privacypolicy` or `/terms` in the chat for dynamic, customized document generation.
+
+---
+
+## 2. Packaged Claude Skill (SKILL.md)
+
+For AI assistants using the Claude desktop app, Antigravity IDE, or similar platforms, you can load this repository folder as a local skill. It uses a core orchestrator SKILL.md and detailed reference modules:
+
+*   [SKILL.md](SKILL.md) - The data inventory checklist and global decision tree.
+*   [references/global-privacy-laws.md](references/global-privacy-laws.md) - GDPR, India DPDP, California CCPA/CPRA, LGPD, PIPEDA.
+*   [references/play-store-policy.md](references/play-store-policy.md) - Play Store Developer Verification, Contacts Picker Policy, Geofencing.
+*   [references/app-store-policy.md](references/app-store-policy.md) - Apple Privacy Nutrition Label and ATT rules.
+*   [references/ad-monetization.md](references/ad-monetization.md) - Google UMP SDK, consent parameters, COPPA tags.
+*   [references/children-accessibility.md](references/children-accessibility.md) - Families Policy, Age Signals API, European Accessibility Act (EAA).
+*   [references/security-baseline.md](references/security-baseline.md) - Secure storage, redacted logging, network config.
+*   [references/legal-documents.md](references/legal-documents.md) - Privacy policy and ToS clause reference.
+*   [references/prelaunch-audit-checklist.md](references/prelaunch-audit-checklist.md) - Submission audit checklist.
 
 ---
 
@@ -104,4 +88,4 @@ This project is engineering-focused compliance reference material, not legal adv
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](android-legal-compliance/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

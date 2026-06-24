@@ -5,35 +5,34 @@ description: Use this skill for ANY Android (or cross-platform mobile) app proje
 
 # Android App Legal and Compliance Skill
 
-Engineering-facing compliance reference for indie/solo Android developers. Goal: ship apps that won't get rejected, fined, or banned — globally, not just in one country. This is not legal advice (see Disclaimer at the bottom) — it is a practical, current (2026) checklist built from public regulator and platform documentation, written so an AI coding agent can act on it directly.
+Engineering-facing compliance reference for indie/solo Android developers. Goal: ship apps that will not get rejected, fined, or banned — globally, not just in one country. This is not legal advice (see Disclaimer at the bottom) — it is a practical, current (2026) checklist built from public regulator and platform documentation, written so an AI coding agent can act on it directly.
 
 ## How to use this skill
 
-1. **Auto-Install Guardrails** — Run `python scripts/install.py <project_path>` to copy `.cursorrules` and the compliance scanner to the project root. Alternatively, run `python scripts/register_skill.py` to register this skill globally for your AI assistant.
-2. **Interactive Checklist** — Open `index.html` in your browser to access the local compliance dashboard, track progress with auto-save, and generate customized Privacy Policies.
-3. **Data Inventory** — Answer the questions in Step 1 below for the specific app.
-4. **Decision Tree** — Step 2 tells you which legal regimes actually apply to this app.
-5. **Universal baseline and Scanner** — Step 3 applies to every app, no exceptions. Run the scanner `python scripts/audit.py <project_path>` to automatically detect issues and write a local `COMPLIANCE_REPORT.md`.
-6. **Conditional modules** — Step 4 points to `references/*.md` for whichever regimes triggered.
-7. **Before every Play Console submission** — Run `references/prelaunch-audit-checklist.md` top to bottom.
+1. **AI Integration** — Place the `.cursorrules` file in the root of your project so your AI agent automatically enforces these guidelines during development.
+2. **Data Inventory** — Answer the questions in Step 1 below for the specific app.
+3. **Decision Tree** — Step 2 tells you which legal regimes actually apply to this app.
+4. **Universal Baseline** — Step 3 applies to every app, no exceptions.
+5. **Conditional Modules** — Step 4 points to `references/*.md` for whichever regimes triggered.
+6. **Before Submission** — Run `references/prelaunch-audit-checklist.md` top to bottom before uploading your app.
 
-Don't just summarize this file back to the user — apply it: draft the actual Privacy Policy text, fill the actual Data Safety form answers, write the actual `network_security_config.xml`, flag the actual permission that needs a Contact Picker swap, etc.
+Apply these rules directly to the project: draft the actual Privacy Policy text, document the Data Safety form declarations, define the `network_security_config.xml` parameters, and verify permissions.
 
 ---
 
-## Step 1 — Data Inventory (always do this first)
+## Step 1 — Data Inventory
 
-For the app being built/audited, determine:
+For the app being built or audited, determine:
 
-- **Permissions/data sources used**: camera, photos/media, precise or coarse location, contacts, SMS, microphone, body sensors / health & fitness (incl. ML Kit pose/face detection output), call logs, files, Bluetooth/nearby devices.
+- **Permissions and data sources used**: camera, photos/media, precise or coarse location, contacts, SMS, microphone, body sensors / health & fitness (incl. ML Kit pose/face detection output), call logs, files, Bluetooth/nearby devices.
 - **Identifiers collected**: Advertising ID (AAID), Android ID, App Set ID, IP address, device fingerprint.
 - **Accounts**: does the app let users create an account (email, Google Sign-In, phone)?
-- **Third-party SDKs**: AdMob/mediation, Firebase (Analytics, Crashlytics, Auth, Firestore), ML Kit, any analytics SDK. Each one collects data on your behalf — you are responsible for declaring what *they* collect too.
+- **Third-party SDKs**: AdMob/mediation, Firebase (Analytics, Crashlytics, Auth, Firestore), ML Kit, any analytics SDK. Each one collects data on your behalf — you are responsible for declaring what they collect too.
 - **Monetization**: ads (which network/mediation), in-app purchases/subscriptions, no monetization.
 - **Audience**: could children under 13 (US) / under 18 (India, EU minors codes) realistically use or be drawn to this app, even if not the primary target?
-- **Distribution**: Google Play only, or also Apple App Store / other stores? Which countries (Play Store defaults to ~global distribution unless you restrict countries in Console)?
+- **Distribution**: Google Play only, or also Apple App Store / other stores? Which countries (Play Store defaults to global distribution unless you restrict countries in Console)?
 
-This inventory drives every decision below. Re-run it whenever a new permission, SDK, or feature is added — that's the #1 way apps drift out of compliance after launch.
+This inventory drives every decision below. Re-run it whenever a new permission, SDK, or feature is added.
 
 ---
 
@@ -86,9 +85,8 @@ Read the matching file only when Step 2 flagged it relevant:
 
 - [ ] Data inventory documented for this app/version
 - [ ] List of applicable jurisdictions/regimes generated from Step 2
-- [ ] Automated compliance scan run using `scripts/audit.py`
 - [ ] `.cursorrules` placed in project root for automated AI guardrails
-- [ ] Privacy Policy dynamically generated (using index.html or Cursor commands) and hosted at a stable URL
+- [ ] Privacy Policy dynamically generated and hosted at a stable URL
 - [ ] Data Safety form answers drafted, matching the actual binary
 - [ ] Account deletion flow (in-app + web) implemented if accounts exist
 - [ ] AdMob/UMP consent flow implemented if ads are used
